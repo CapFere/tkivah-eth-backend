@@ -1,0 +1,6 @@
+applications:
+  - name: tikvah-eth
+    buildpack: java_buildpack
+    path: target/news-cloud-project-0.0.1-SNAPSHOT.jar
+    services:
+      - tikvah-eth-mysql

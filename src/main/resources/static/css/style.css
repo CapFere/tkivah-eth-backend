@@ -1,0 +1,18 @@
+.navbar-brand-img{
+	width:30px;
+	height:25px;
+}
+.nav-item:hover{
+	border-bottom:1px solid #E3DF2C;
+}
+
+.border-shadow{
+	border:1px solid #E0F2F1;
+}
+
+.border-form{
+	background:#FAFAFA;
+}
+.row-form{
+	border:1px solid #E0F2F1;
+}

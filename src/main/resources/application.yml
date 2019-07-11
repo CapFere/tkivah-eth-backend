@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/news_db
+    username: root
+    password:
+  jpa:
+    hibernate.ddl-auto: none
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect

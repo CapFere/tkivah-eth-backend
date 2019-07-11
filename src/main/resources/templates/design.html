@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Taco Cloud</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+
+  <body>
+  <header>
+  		<nav class="navbar navbar-expand-sm navbar-lignt bg-light py-3">
+  			<a class="navbar-brand text-muted">
+  				<img th:src="@{/images/TacoCloud.png}" class="navbar-brand-img mr-2"/>Taco Cloud
+  			</a>
+  			<div class="ml-5">
+  				<ul class="navbar-nav">
+  					<li class="nav-item"><a class="nav-link text-muted active" th:href="@{/}">Home</a></li>
+  					<li class="nav-item"><a class="nav-link text-muted active" th:href="@{/design}">Design Taco</a></li>
+  					<li class="nav-item ml-auto"><a class="nav-link text-muted active" th:href="@{/logout}">Logout</a></li>
+  				</ul>
+  			</div>
+  		</nav>
+  </header>
+  <div class="container">
+  		<div class="row mb-4">
+  			<div class="col-sm d-flex">
+  				<h1 class="align-self-center display-4">Design Your Taco!</h1>
+  				<h1 class="align-self-center display-4">Mr./Ms.<span th:text="${user.firstName}" class="text-primary">First Name</span></h1>
+  			</div>
+  			<div class="col-sm">
+  				<img th:src="@{/images/TacoCloud.png}"/>
+  			</div>
+  		</div>
+  		<form method="POST" th:action="@{/design}" th:object="${newsDesign}">
+  			<span class="text-danger" 
+			     th:if="${#fields.hasErrors('users')}"
+			     th:errors="*{users}">Ingredient Error
+		    </span>
+		    <div class="row">
+			    <div class="col-sm m-3 border-shadow p-4">
+			      <h3 class="text-info">Designate your wrap:</h3>
+			      <div th:each="user : ${wrap}">
+			      	<div class="form-check">
+			      		<input name="ingredients" type="checkbox" th:value="${user.id}" class="from-check-input" />
+			        	<span th:text="${user.name}" class="form-check-label">INGREDIENT</span><br/>
+			      	</div> 
+			      </div>
+			    </div>
+			    <div class="col-sm m-3 border-shadow p-4">
+			      <h3 class="text-info">Pick your protein:</h3>
+			      <div th:each="user : ${protein}">
+			      	<div class="form-check">
+			      		<input name="ingredients" type="checkbox" th:value="${user.id}" class="from-check-input" />
+			        	<span th:text="${user.name}" class="form-check-label">INGREDIENT</span><br/>
+			      	</div> 
+			      </div>
+			    </div>
+      		</div>
+      		
+      		<div class="row">
+			    <div class="col-sm m-3 border-shadow p-4">
+			      <h3 class="text-info">Choose your cheese:</h3>
+			      <div th:each="user : ${cheese}">
+			      	<div class="form-check">
+			      		<input name="ingredients" type="checkbox" th:value="${user.id}" class="from-check-input" />
+			        	<span th:text="${user.name}" class="form-check-label">INGREDIENT</span><br/>
+			      	</div> 
+			      </div>
+			    </div>
+			    <div class="col-sm m-3 border-shadow p-4">
+			      <h3 class="text-info">Determine your veggies:</h3>
+			      <div th:each="user : ${veggies}">
+			      	<div class="form-check">
+			      		<input name="ingredients" type="checkbox" th:value="${user.id}" class="from-check-input" />
+			        	<span th:text="${user.name}" class="form-check-label">INGREDIENT</span><br/>
+			      	</div> 
+			      </div>
+			    </div>
+      		</div>
+      		<div class="row">
+			    <div class="col-sm-12 m-3 border-shadow p-4">
+			      <h3 class="text-info">Select your sauce:</h3>
+			      <div th:each="user : ${sauce}">
+			      	<div class="form-check">
+			      		<input name="ingredients" type="checkbox" th:value="${user.id}" class="from-check-input" />
+			        	<span th:text="${user.name}" class="form-check-label">INGREDIENT</span><br/>
+			      	</div> 
+			      </div>
+			    </div>
+      		</div>
+      		<div class="row">
+			    <div class="col-sm-6 m-3 border-form p-4 mx-auto">
+			      <h3 class="text-info">Name your news creation:</h3>
+			      	<div class="form-group">
+			      		<input type="text" th:field="*{name}" class="form-control"/>
+					       <small class="text-danger form-text" 
+					     	th:if="${#fields.hasErrors('name')}" 
+					     	th:errors="*{name}">Name Error
+					     </small>
+			      	</div> 
+			      	<button class="btn btn-primary btn-border-0">Submit Your Taco</button>
+			    </div>
+      		</div>
+  		</form>
+  </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script th:href="@{/js/jquery-3.3.1.slim.min.js}" src="../js/jquery-3.3.1.slim.min.js"></script>
+    <script th:href="@{/js/popper.min.js}" src="../js/popper.min.js"></script>
+    <script th:href="@{/js/bootstrap.min.js}" src="../js/bootstrap.min.js"></script>
+    <script th:href="@{/js/holder.min.js}" src="../js/holder.min.js"></script>
+  </body>
+</html>
